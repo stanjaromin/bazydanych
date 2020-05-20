@@ -14,4 +14,5 @@ for row in cursor:
     print(row)
 
 cursor.close()
+db.commit()
 db.close()
