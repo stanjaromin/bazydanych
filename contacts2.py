@@ -5,9 +5,12 @@ db = sqlite3.connect("contacts.sqlite")
 new_email = "anotherupdateddd@malpa.com"
 phone = input("Please enter the phone number ")
 
-update_sql = "UPDATE contacts SET email = '{}' WHERE phone = {}".format(new_email, phone)
+# update_sql = "UPDATE contacts SET email = '{}' WHERE phone = {}".format(new_email, phone)
+update_sql = "UPDATE contacts SET email = ? WHERE phone = ?"
+print(update_sql)
+
 update_cursor = db.cursor()
-update_cursor.executescript(update_sql) # execute i executescript
+update_cursor.execute(update_sql, (new_email, phone))  # execute i executescript
 print("{} rows updated".format(update_cursor.rowcount))
 
 print()
